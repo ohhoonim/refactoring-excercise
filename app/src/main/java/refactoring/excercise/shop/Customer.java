@@ -26,7 +26,7 @@ public class Customer {
             double thisAmount = 0;
             Rental each = (Rental) rentals.nextElement();
 
-            thisAmount = amountFor(each);
+            thisAmount = each.getCharge();
 
             // 적립 포인트를 1 포인트 증가
             frequentRenterPoints++;
@@ -46,9 +46,5 @@ public class Customer {
         return result;
     }
 
-    // 메서드로 추출되었으나 Rental 클래스만 이용하고 있으므로 
-    // Rental class에 getCharge 메서드로 로직 이동
-    private double amountFor(Rental aRental) {
-        return aRental.getCharge(aRental);
-    }
+    
 }
