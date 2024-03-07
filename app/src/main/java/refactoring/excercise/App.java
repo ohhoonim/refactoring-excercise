@@ -3,12 +3,18 @@
  */
 package refactoring.excercise;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import refactoring.excercise.shop.Customer;
+import refactoring.excercise.shop.Movie;
+import refactoring.excercise.shop.Rental;
 
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Customer customer = new Customer("홍길동");
+        customer.addRental(new Rental(new Movie("가문의 영광:비긴즈", Movie.REGULAR), 2));
+        customer.addRental(new Rental(new Movie("파묘", Movie.NEW_RELEASE), 2));
+        customer.addRental(new Rental(new Movie("벙커 게임", Movie.NEW_RELEASE), 2));
+        customer.addRental(new Rental(new Movie("굿다이노", Movie.CHILDRENS), 2));
+        
+        System.out.println(customer.statement());
     }
 }
