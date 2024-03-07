@@ -26,7 +26,7 @@ public class Customer {
             double thisAmount = 0;
             Rental each = (Rental) rentals.nextElement();
 
-            thisAmount = amountForRental(each);
+            thisAmount = amountFor(each);
 
             // 적립 포인트를 1 포인트 증가
             frequentRenterPoints++;
@@ -46,24 +46,24 @@ public class Customer {
         return result;
     }
 
-    private double amountForRental(Rental each) {
-        double thisAmount = 0;
-        switch(each.getMovie().getPriceCode()){
+    private double amountFor(Rental aRental) {
+        double result = 0;
+        switch(aRental.getMovie().getPriceCode()){
             case Movie.REGULAR:
-                thisAmount += 2;
-                if (each.getDaysRented() > 2)
-                    thisAmount += (each.getDaysRented() - 2) * 1.5;  // 대여료 계산
+                result += 2;
+                if (aRental.getDaysRented() > 2)
+                    result += (aRental.getDaysRented() - 2) * 1.5;  // 대여료 계산
                 break;
             case Movie.NEW_RELEASE:
-                thisAmount += each.getDaysRented() * 3;  // 대여료 계산
+                result += aRental.getDaysRented() * 3;  // 대여료 계산
                 break;
             case Movie.CHILDRENS:
-                thisAmount += 1.5;
-                if (each.getDaysRented() > 3)
-                    thisAmount += (each.getDaysRented() - 3) * 1.5;  // 대여료 계산
+                result += 1.5;
+                if (aRental.getDaysRented() > 3)
+                    result += (aRental.getDaysRented() - 3) * 1.5;  // 대여료 계산
                 break;
         }
-        return thisAmount;
+        return result;
 
     }
 }
