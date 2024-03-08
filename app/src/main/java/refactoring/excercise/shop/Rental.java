@@ -17,26 +17,6 @@ public class Rental {
         return _movie;
     }
     
-    public double getCharge() {
-        double result = 0;
-        switch(getMovie().getPriceCode()){
-            case Movie.REGULAR:
-                result += 2;
-                if (getDaysRented() > 2)
-                    result += (getDaysRented() - 2) * 1.5;  // 대여료 계산
-                break;
-            case Movie.NEW_RELEASE:
-                result += getDaysRented() * 3;  // 대여료 계산
-                break;
-            case Movie.CHILDRENS:
-                result += 1.5;
-                if (getDaysRented() > 3)
-                    result += (getDaysRented() - 3) * 1.5;  // 대여료 계산
-                break;
-        }
-        return result;
-    }
-
     public int getFrequentRenterPoints() {
         // 최신물을 이틀 이상 대여하면 보너스 포인트 지급
         if ((getMovie().getPriceCode() == Movie.NEW_RELEASE) && getDaysRented() > 1) {
@@ -44,5 +24,9 @@ public class Rental {
         } else {
             return 1;
         }
+    }
+
+    public double getCharge() {
+        return _movie.getCharge(_daysRented);
     }
 }
