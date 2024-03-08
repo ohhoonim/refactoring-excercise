@@ -16,5 +16,6 @@ public class App {
         customer.addRental(new Rental(new Movie("굿다이노", Movie.CHILDRENS), 2));
         
         System.out.println(customer.statement());
+        System.out.println(customer.htmlStatement());
     }
 }
