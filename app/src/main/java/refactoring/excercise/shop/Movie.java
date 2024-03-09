@@ -9,7 +9,7 @@ public class Movie {
     public static final int REGULAR = 0;
     public static final int NEW_RELEASE = 1;
     private String _title;
-    private int _priceCode;
+    // private int _priceCode;
     private Price _price;
 
     public Movie(String title, int priceCode) {
@@ -47,11 +47,6 @@ public class Movie {
     }
 
     public int getFrequentRenterPoints(int daysRented) {
-        // 최신물을 이틀 이상 대여하면 보너스 포인트 지급
-        if ((getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1) {
-            return 2;
-        } else {
-            return 1;
-        }
+        return _price.getFrequentRenterPoints(daysRented);
     }
 }
