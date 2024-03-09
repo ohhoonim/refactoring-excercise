@@ -9,7 +9,8 @@ public class Movie {
 
     public Movie(String title, int priceCode) {
         _title = title;
-        _priceCode = priceCode;
+        // 상태/전략 패턴으로 전환 기법을 이용하려면 getter/setter를 이용하도록 강제해야한다.
+        setPriceCode(priceCode);
     }
 
     public int getPriceCode() {
